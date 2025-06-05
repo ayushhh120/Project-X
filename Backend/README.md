@@ -310,3 +310,147 @@ or
 
 ---
 
+# /captains/login Endpoint Documentation
+
+## Description
+The `/captains/login` endpoint allows existing captains to log in by validating their credentials. On success, it returns an authentication token and the captain object.
+
+## Method
+**POST**
+
+## Request Body
+The endpoint expects a JSON payload with the following structure:
+```json
+{
+  "email": "string, required, valid email address",
+  "password": "string, required, min. 6 characters"
+}
+```
+
+## Responses
+
+### Success
+- **Status Code:** 200 OK  
+- **Body:**  
+```json
+{
+  "token": "authentication token",
+  "captain": {
+    "_id": "60ad0cedf8d1f80015ecd9ac",
+    "fullname": {
+      "firstname": "Ayush", // string, min. 3 characters
+      "lastname": "Dwivedi" // string, optional, min. 3 characters
+    },
+    "email": "ayush@gmail.com", // string, valid email
+    "vehicle": {
+      "color": "blue", // string, min. 3 characters
+      "plate": "UP 32 AS 8484", // string, min. 3 characters
+      "capacity": 3, // number
+      "vehicleType": "car" // string, min. 3 characters
+    },
+    "status": "inactive"
+    // ...other fields
+  }
+}
+```
+
+### Error
+- **Status Code:** 400 Bad Request  
+- **Body:**  
+```json
+{
+  "errors": [
+    // list of validation errors if request data is invalid
+  ]
+}
+```
+or
+```json
+{
+  "message": "Invalid email or password"
+}
+```
+
+---
+
+# /captains/profile Endpoint Documentation
+
+## Description
+The `/captains/profile` endpoint retrieves the authenticated captain's profile information. Requires authentication.
+
+## Method
+**GET**
+
+## Headers
+```
+Authorization: Bearer <token>
+```
+
+### Success
+- **Status Code:** 200 OK
+- **Body:**
+```json
+{
+  "captain": {
+    "_id": "60ad0cedf8d1f80015ecd9ac",
+    "fullname": {
+      "firstname": "Ayush", // string, min. 3 characters
+      "lastname": "Dwivedi" // string, optional, min. 3 characters
+    },
+    "email": "ayush@gmail.com", // string, valid email
+    "vehicle": {
+      "color": "blue", // string, min. 3 characters
+      "plate": "UP 32 AS 8484", // string, min. 3 characters
+      "capacity": 3, // number
+      "vehicleType": "car" // string, min. 3 characters
+    },
+    "status": "inactive"
+    // ...other fields
+  }
+}
+```
+
+### Error
+- **Status Code:** 401 Unauthorized
+- **Body:**
+```json
+{
+  "message": "Authentication required"
+}
+```
+
+---
+
+# /captains/logout Endpoint Documentation
+
+## Description
+The `/captains/logout` endpoint logs out the current captain by clearing their authentication token and blacklisting it. Requires authentication.
+
+## Method
+**GET**
+
+## Headers
+```
+Authorization: Bearer <token>
+```
+
+### Success
+- **Status Code:** 200 OK
+- **Body:**
+```json
+{
+  "message": "Logged out successfully"
+}
+```
+
+### Error
+- **Status Code:** 401 Unauthorized
+- **Body:**
+```json
+{
+  "message": "Authentication required"
+}
+```
+
+---
+
