@@ -229,3 +229,84 @@ Authorization: Bearer <token>
   "message": "Authentication required"
 }
 ```
+
+---
+
+# /captains/register Endpoint Documentation
+
+## Description
+The `/captains/register` endpoint allows new captains to register. It validates the provided data and, on success, returns a token along with the captain object.
+
+## Method
+**POST**
+
+## Request Body
+The endpoint expects a JSON payload with the following structure:
+```json
+{
+  "fullname": {
+    "firstname": "string (min. 3 characters)",
+    "lastname": "string (optional, min. 3 characters)"
+  },
+  "email": "valid email address (min. 5 characters)",
+  "password": "string (min. 6 characters)",
+  "vehicle": {
+    "color": "string (min. 3 characters)",
+    "plate": "string (min. 3 characters)",
+    "capacity": 3,
+    "vehicleType": "car"
+  }
+}
+```
+
+## Responses
+
+### Success
+- **Status Code:** 201 Created  
+- **Body:**  
+```json
+{
+  "token": "authentication token",
+  "captain": {
+    "_id": "60ad0cedf8d1f80015ecd9ac",
+    "fullname": {
+      "firstname": "Ayush",
+      "lastname": "Dwivedi"
+    },
+    "email": "ayush@gmail.com",
+    "vehicle": {
+      "color": "blue",
+      "plate": "UP 32 AS 8484",
+      "capacity": 3,
+      "vehicleType": "car"
+    },
+    "status": "inactive"
+    // ...other fields
+  }
+}
+```
+
+### Error
+- **Status Code:** 400 Bad Request  
+- **Body:**  
+```json
+{
+  "errors": [
+    {
+      "type": "field",
+      "msg": "Capacity must be a number",
+      "path": "vehicle.capacity",
+      "location": "body"
+    }
+  ]
+}
+```
+or
+```json
+{
+  "message": "Captain already exists"
+}
+```
+
+---
+

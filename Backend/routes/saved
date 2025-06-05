@@ -1,0 +1,20 @@
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODQxNGI2MjMxMmEzOGM3YTEwN2NhZTgiLCJpYXQiOjE3NDkxMDk2MDIsImV4cCI6MTc0OTE5NjAwMn0.UEVUJ6YhkHyMWQ6g-dBhcrUmXh3kuSApgi_2mYAfHZM",
+    "captain": {
+        "fullname": {
+            "firstname": "ayush",
+            "lastname": "dwivedi"
+        },
+        "email": "ayush@gmail.com",
+        "password": "$2b$10$4RLOJS0KyFawjFHMVHP1Ce0r1eShQ7iL76A4F8GMLFdwQeotnr2f6",
+        "status": "inactive",
+        "vehicle": {
+            "color": "blue",
+            "plate": "UP 32 AS 8484",
+            "capacity": 3,
+            "vehicleType": "car"
+        },
+        "_id": "68414b62312a38c7a107cae8",
+        "__v": 0
+    }
+}

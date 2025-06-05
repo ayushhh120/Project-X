@@ -2,14 +2,19 @@ const dotenv = require('dotenv');
 dotenv.config(); 
 const express = require('express');
 const app = express();
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
-app.use(cors());
 const connectDB = require('./db/db');
 const userRoutes = require('./routes/user.routes');
-const cookieParser = require('cookie-parser');
+const captainRoutes = require('./routes/captain.routes');
+
+
 
 // Connect to the database
 connectDB();
+
+// middleware to enable CORS 
+app.use(cors());
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -27,6 +32,9 @@ app.get('/', (req, res)=>{
 
 // Import and use user routes
 app.use('/users', userRoutes);
+
+// Import and use captain routes
+app.use('/captains', captainRoutes);
 
 
 
