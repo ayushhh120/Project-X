@@ -140,14 +140,16 @@ const Home = () => {
         <div ref={panelRef} className=' bg-white h-0'>
         <LocationSearchPanel setPanelOpen={setPanelOpen} setVehiclePanel={setVehiclePanel} />
        </div>
-      
       </div>
+
         <div ref={vehiclePanelRef} className='fixed z-10 px-3 py-8 pt-12 translate-y-full w-full bg-white bottom-0'>
        <VehiclePanel setConfirmRidePanel={setConfirmRidePanel} setVehiclePanel={setVehiclePanel} />
       </div>
+
       <div ref={confirmRidePanelRef} className='fixed z-10 px-3 py-6 pt-12 translate-y-full w-full bg-white bottom-0'>
       <ConfirmRide setConfirmRidePanel={setConfirmRidePanel} setVehicleFound={setVehicleFound} />
       </div>
+
        <div ref={vehicleFoundRef} className='fixed z-10 px-3 py-6 pt-12 translate-y-full w-full bg-white bottom-0'>
          <LookingForDriver setVehicleFound={setVehicleFound}/>
       </div>

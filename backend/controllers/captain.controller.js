@@ -1,7 +1,8 @@
 const captainModel = require('../models/captain.model');
 const captainService = require('../services/captain.service');
 const {validationResult} = require('express-validator');
-const blackListTokenModel = require('../models/blacklistToken.model');      
+const blackListTokenModel = require('../models/blacklistToken.model');  
+    
 
 
 // This function registers a new captain by validating the input,

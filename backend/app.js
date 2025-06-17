@@ -7,6 +7,8 @@ const cors = require('cors');
 const connectDB = require('./db/db');
 const userRoutes = require('./routes/user.routes');
 const captainRoutes = require('./routes/captain.routes');
+const mapRoutes = require('./routes/maps.routes');
+const rideRoutes = require('./routes/rides.routes');
 
 
 
@@ -36,6 +38,11 @@ app.use('/users', userRoutes);
 // Import and use captain routes
 app.use('/captains', captainRoutes);
 
+// Import and use map routes
+app.use('/maps', mapRoutes);
+
+// Import and use ride routes
+app.use('/rides', rideRoutes);
 
 
 

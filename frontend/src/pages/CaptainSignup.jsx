@@ -165,7 +165,7 @@ const CaptainSignup = () => {
 
 
       </form>
-       <p className='text-center '>Already have an account?<Link to={'/captain-login'} className='text-blue-500'>Login</Link></p>
+       <p className='text-center'>Already have an account?<Link to={'/captain-login'} className='text-blue-500'>Login</Link></p>
       </div>
     </div>
   )
