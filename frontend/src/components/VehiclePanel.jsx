@@ -10,6 +10,9 @@ const VehiclePanel = (props) => {
 
           <div onClick={()=>{
             props.setConfirmRidePanel(true)
+            props.setVehicleType('car')
+            props.setVehiclePanel(false)
+
           }} className='flex p-3 mb-2 w-full border-gray-300 active:border-black  rounded-xl item-center justify-between'>
             <img className='h-12' src="/Images/UberCar.webp" alt="" />
             <div className='w-1/2 ml-2'>
@@ -17,11 +20,13 @@ const VehiclePanel = (props) => {
             <h5 className='font-light text-sm'>2 mins away</h5>
             <p className='font-light text-xs text-gray-600'>Affordable, compact rides</p>
             </div>
-            <h1 className='text-1xl font-semibold'>193.20</h1>
+            <h1 className='text-1xl font-semibold'>₹{props.fare.car}</h1>
           </div>
 
           <div onClick={()=>{
             props.setConfirmRidePanel(true)
+            props.setVehicleType('motorcycle')
+             props.setVehiclePanel(false)
           }}  className='flex p-3 mb-2 w-full border-gray-300 active:border-black rounded-xl item-center justify-between'>
             <img className='h-12' src="/Images/UberBike.webp" alt="" />
             <div className='ml-2 w-1/2'>
@@ -29,11 +34,12 @@ const VehiclePanel = (props) => {
             <h5 className='font-light text-sm'>2 mins away</h5>
             <p className='font-light text-xs text-gray-600'>Affordable, Motorcycle rides</p>
             </div>
-            <h1 className='text-1xl font-semibold'>75.80</h1>
+            <h1 className='text-1xl font-semibold'>₹{props.fare.motorcycle}</h1>
           </div>  
 
           <div onClick={()=>{
             props.setConfirmRidePanel(true)
+            props.setVehicleType('auto')
           }}  className='flex p-3 mb-2 w-full border-gray-300 active:border-black rounded-xl item-center justify-between'>
             <img className='h-12' src="/Images/UberAuto.webp" alt="" />
             <div className='ml-2 w-1/2'>
@@ -41,7 +47,7 @@ const VehiclePanel = (props) => {
             <h5 className='font-light text-sm'>5 mins away</h5>
             <p className='font-light text-xs text-gray-600'>Affordable, Auto rides</p>
             </div>
-            <h1 className='text-1xl font-semibold'>120.25</h1>
+            <h1 className='text-1xl font-semibold'>₹{props.fare.auto}</h1>
           </div></div>
   )
 }

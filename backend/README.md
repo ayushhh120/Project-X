@@ -454,3 +454,58 @@ Authorization: Bearer <token>
 
 ---
 
+# /rides/get-fare Endpoint Documentation
+
+## Description
+The `/rides/get-fare` endpoint calculates and returns the estimated fare for a ride based on the provided pickup and destination locations. Requires authentication.
+
+## Method
+**GET**
+
+## Headers
+```
+Authorization: Bearer <token>
+```
+
+## Query Parameters
+- `pickup`: `string` (required, min. 3 characters) — The pickup location address.
+- `destination`: `string` (required, min. 3 characters) — The destination address.
+
+### Example Request
+```
+GET /rides/get-fare?pickup=Lucknow%20Station&destination=Hazratganj
+Authorization: Bearer <token>
+```
+
+## Responses
+
+### Success
+- **Status Code:** 200 OK  
+- **Body:**  
+```json
+{
+  "auto": 54.5,
+  "car": 82.25,
+  "motorcycle": 41.75
+}
+```
+*(The values are examples; actual fare depends on distance and duration.)*
+
+### Error
+- **Status Code:** 400 Bad Request  
+- **Body:**  
+```json
+{
+  "errors": [
+    // list of validation errors if request data is invalid
+  ]
+}
+```
+- **Status Code:** 500 Internal Server Error  
+- **Body:**  
+```json
+{
+  "message": "Internal Server Error"
+}
+```
+

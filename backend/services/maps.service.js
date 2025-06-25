@@ -1,4 +1,5 @@
 const axios = require('axios');
+const captainModel = require('../models/captain.model')
 
 // This service fetches the coordinates of a given address using the Google Maps Geocoding API.
 module.exports.getAddressCoordinate = async (address) => {
@@ -21,8 +22,10 @@ module.exports.getAddressCoordinate = async (address) => {
     ) {
       const location = response.data.results[0].geometry.location;
       return {
-        latitude: location.lat,
-        longitude: location.lng
+
+       longitude: location.lng,
+        latitude: location.lat
+       
       };
     } else {
       throw new Error('No results found for the given address.');
@@ -93,4 +96,19 @@ module.exports.getSuggestions = async (input) => {
     console.error(error);
     throw error;
   }
+}
+
+// this function finds captain nearby pickup location
+module.exports.getCaptainsInTheRadius = async ( longitude, latitude ,   radius) =>{
+  const captain = await captainModel.find({
+    location:{
+      $geoWithin:{
+        $centerSphere: [ [longitude, latitude], radius / 6371 ] //radius in km
+        
+      }
+      
+    }
+  
+  })
+  return captain;
 }

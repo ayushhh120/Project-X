@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
         //  this because we dont need the user's password when finding users
         select: false,
        } ,
-       socketID:{
+       socketId:{
         type: String
        }
 })
@@ -51,6 +51,6 @@ userSchema.statics.hashPassword = async function (password) {
     return await bcrypt.hash(password, 10);
 }
 // Create a user model using the schema
-const userModel = mongoose.model('User', userSchema);
+const userModel = mongoose.model('user', userSchema);
 
 module.exports = userModel;

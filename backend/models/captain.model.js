@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt'); 
 const jwt = require('jsonwebtoken');
+const { ListIndexesCursor } = require('mongodb');
 
 const captainSchema = new mongoose.Schema({
 
@@ -28,7 +29,7 @@ const captainSchema = new mongoose.Schema({
         required: true,
         select: false, // Exclude password from queries by default
     },
-    socketID: {
+    socketId: {
         type: String
     },
     // check the status of captain whether it is active or inactive
@@ -63,15 +64,13 @@ const captainSchema = new mongoose.Schema({
         
     },
 
-    location:{
-        latitude: {
-            type: Number,
-    },
-        longitude: {
-            type: Number,
-        }
-    }
+    location: {
+  type: { type: String, enum: ['Point'], default: 'Point' },
+  coordinates: { type: [Number], default: [0, 0] } // [lng, lat]
+}
 })
+
+captainSchema.index({ location: "2dsphere" });
 
 captainSchema.methods.generateAuthToken = function () {
   const token = jwt.sign({ _id: this._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
