@@ -16,7 +16,14 @@ const rideRoutes = require('./routes/rides.routes');
 connectDB();
 
 // middleware to enable CORS 
-app.use(cors());
+
+const cors = require("cors");
+
+app.use(cors({
+  origin: "https://uberapp-mu.vercel.app", 
+  credentials: true
+}));
+
 
 // Middleware to parse JSON bodies
 app.use(express.json());

@@ -14,13 +14,13 @@ function initializeSocket(server) {
   });
   // Handle socket connection
   io.on("connection", (socket) => {
-    console.log(`Socket connected: ${socket.id}`);
+  
     connectedSockets.set(socket.id, socket);
 
     // Handle join event to update user or captain status
     socket.on("join", async (data) => {
       const { userId, userType } = data;
-      // console.log(`User ${userId} joined as ${userType}`)
+  
       if (userType === "user") {
         await userModel.findByIdAndUpdate(userId, { socketId: socket.id });
       } else if (userType === "captain") {
