@@ -10,14 +10,10 @@ const captainRoutes = require('./routes/captain.routes');
 const mapRoutes = require('./routes/maps.routes');
 const rideRoutes = require('./routes/rides.routes');
 
-
-
 // Connect to the database
 connectDB();
 
 // middleware to enable CORS 
-
-const cors = require("cors");
 
 app.use(cors({
   origin: "https://uberapp-mu.vercel.app", 
